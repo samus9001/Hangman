@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             List<string> words = new List<string>() { "rabbit", "blanket", "glitter", "cranium" };
-            
+
             var random = new Random();
             int index = random.Next(words.Count);
 
@@ -14,12 +14,12 @@
 
             //allows the input to only be one character
             char guess = Console.ReadKey().KeyChar;
-            string g = Char.ToString( guess );
-            
+            string userGuess = Char.ToString(guess);
+
             //checks if the guess contains the matching element within it
-            if (g.Contains(words[index], StringComparison.OrdinalIgnoreCase))
+            if (words[index].Contains(userGuess, StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine("That's a match!");
+                Console.WriteLine("\nThat's a match!");
             }
         }
     }
