@@ -12,10 +12,12 @@
             //outputs a random element from the list index
             Console.WriteLine($"{words[index]}");
 
-            string guess = Console.ReadLine();
-
+            //allows the input to only be one character
+            char guess = Console.ReadKey().KeyChar;
+            string g = Char.ToString( guess );
+            
             //checks if the guess contains the matching element within it
-            if (guess.Contains(words[index], StringComparison.OrdinalIgnoreCase))
+            if (g.Contains(words[index], StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("That's a match!");
             }
