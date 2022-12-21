@@ -9,12 +9,16 @@
             var random = new Random();
             int index = random.Next(words.Count);
 
-            //Console.WriteLine($"LIST 1: {words[0]}");
-
             //outputs a random element from the list index
             Console.WriteLine($"{words[index]}");
 
             string guess = Console.ReadLine();
+
+            //checks if the guess contains the matching element within it
+            if (guess.Contains(words[index], StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("That's a match!");
+            }
         }
     }
 }
