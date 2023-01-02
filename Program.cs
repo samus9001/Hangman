@@ -10,6 +10,7 @@
             var random = new Random();
             int index = random.Next(words.Count);
             string word = words[index];
+            string hiddenWord = "";
 
             //variables that track the game state
             char guess;
@@ -22,13 +23,21 @@
 
             //outputs the chosen word (for testing)
             Console.WriteLine(word);
+            Console.WriteLine(word.Length);
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                hiddenWord += "_";
+            }
+
+            Console.WriteLine(hiddenWord);  // Output: "xxxxx"
 
             //main game loop
             while (true)
             {
                 //makes the input one character only
                 guess = Console.ReadKey().KeyChar;
-                
+
                 //loops through each character in the element
                 for (int i = 0; i < word.Length; i++)
                 {
@@ -36,8 +45,11 @@
                     if (word[i] == guess)
                     {
                         Console.WriteLine("\nThat is a match!\n");
+                        hiddenWord = hiddenWord.Remove(i, 1).Insert(i, guess.ToString());
                     }
                 }
+
+                Console.WriteLine(hiddenWord);
 
                 //checks if the guess character is not present in the element
                 if (!word.Contains(guess, StringComparison.OrdinalIgnoreCase))
@@ -48,7 +60,7 @@
                     Console.WriteLine("\nThat is not a match\n");
                 }
 
-                if (gameWon) 
+                if (gameWon)
                 {
                     Console.WriteLine("\nYou won!\n");
                     break;
