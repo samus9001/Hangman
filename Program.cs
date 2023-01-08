@@ -14,14 +14,13 @@
             char guess;
             int incorrectGuess = 0;
             const int ATTEMPTS = 8;
-            bool correctGuess = false; //not implemented yet
-            bool gameWon = false; //not implemented yet
+            bool gameWon = false;
 
             string word = words[index];
             string hiddenWord = "";
 
 
-            Console.WriteLine("Welcome to Hangman. You must guess the word in 8 attempts.\nEnter a character for your guess: \n");
+            Console.WriteLine("Welcome to Hangman! You must guess the word in 8 attempts to win.\nEnter a character for your guess: \n");
 
             //loop that sets the hiddenWord string length to the same as the chosen element
             for (int i = 0; i < word.Length; i++)
@@ -62,15 +61,23 @@
                     }
                     Console.Clear();
                 }
+
                 Console.WriteLine($"\n{hiddenWord}\n");
 
+                //game over condition check
                 if (incorrectGuess >= ATTEMPTS)
                 {
-                    Console.WriteLine("\nGame over!");
+                    Console.WriteLine($"\nGame over! The word was {word}");
                     break;
                 }
 
-                if (gameWon) //not implemented yet
+                //game won condition check
+                if (hiddenWord == word) 
+                {
+                    gameWon= true;
+                }
+
+                if (gameWon == true) //not implemented yet
                 {
                     Console.WriteLine("\nYou won!\n");
                     break;
