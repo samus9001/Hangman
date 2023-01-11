@@ -6,7 +6,7 @@
 
         static void Main(string[] args)
         {
-            List<string> words = new List<string>() {"rabbit", "blanket", "glitter", "cranium"};
+            List<string> words = new List<string>() { "rabbit", "blanket", "glitter", "cranium" };
 
             //selects random element from the list
             var random = new Random();
@@ -14,6 +14,7 @@
 
             //variables that track the game state
             char guess;
+            char endGame;
             int incorrectGuess = 0;
             int guessesLeft = 8;
 
@@ -33,7 +34,7 @@
             Console.WriteLine($"\n{hiddenWord}\n");
 
             //main game loop
-            while (true)
+            while (hiddenWord != word)
             {
                 Console.WriteLine(); //new line
                 //makes the input one character only
@@ -71,15 +72,40 @@
                 //game over condition check
                 if (incorrectGuess >= ATTEMPTS)
                 {
-                    Console.WriteLine($"\nGame over! The word was {word}");
-                    break;
+                    Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press N to exit");
+                    
+                    //prompts user to restart or exit game
+                    endGame = Console.ReadKey().KeyChar;
+
+                    if (endGame == 'Y')
+                    {
+                        Console.Clear();
+                        Main(args);
+                    }
+
+                    else if (endGame == 'N')
+                    {
+                        Environment.Exit(0);
+                    }
                 }
 
                 //game won condition check
-                if (hiddenWord == word)
+                while (hiddenWord == word)
                 {
-                    Console.WriteLine("\nYou won!\n");
-                    break;
+                    //break;
+                    Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press N to exit");
+                    endGame = Console.ReadKey().KeyChar;
+
+                    if (endGame == 'Y')
+                    {
+                        Console.Clear();
+                        Main(args);
+                    }
+
+                    else if (endGame == 'N')
+                    {
+                        Environment.Exit(0);
+                    }
                 }
             }
         }
