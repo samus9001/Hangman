@@ -2,9 +2,11 @@
 {
     internal class Program
     {
+        const int ATTEMPTS = 8;
+
         static void Main(string[] args)
         {
-            List<string> words = new List<string>() { "rabbit", "blanket", "glitter", "cranium" };
+            List<string> words = new List<string>() {"rabbit", "blanket", "glitter", "cranium"};
 
             //selects random element from the list
             var random = new Random();
@@ -13,14 +15,13 @@
             //variables that track the game state
             char guess;
             int incorrectGuess = 0;
-            const int ATTEMPTS = 8;
-            bool gameWon = false;
+            int guessesLeft = 8;
 
             string word = words[index];
             string hiddenWord = "";
 
 
-            Console.WriteLine("Welcome to Hangman! You must guess the word in 8 attempts to win.\nEnter a character for your guess: \n");
+            Console.WriteLine($"Welcome to Hangman! You must guess the word in {ATTEMPTS} attempts to win.\nEnter a character for your guess: \n");
 
             //loop that sets the hiddenWord string length to the same as the chosen element
             for (int i = 0; i < word.Length; i++)
@@ -43,7 +44,9 @@
                 if (!word.Contains(guess, StringComparison.OrdinalIgnoreCase))
                 {
                     incorrectGuess++;
-                    Console.WriteLine("That is incorrect!\n");
+                    guessesLeft--;
+                    Console.WriteLine("\nThat is incorrect!\n");
+                    Console.WriteLine($"You have {guessesLeft} guesses left. Try again!");
                 }
 
                 //if guess character is present in the element
@@ -60,6 +63,7 @@
                         }
                     }
                     Console.Clear();
+                    Console.WriteLine("That is correct, keep guessing!\n");
                 }
 
                 Console.WriteLine($"\n{hiddenWord}\n");
@@ -72,12 +76,7 @@
                 }
 
                 //game won condition check
-                if (hiddenWord == word) 
-                {
-                    gameWon= true;
-                }
-
-                if (gameWon == true) //not implemented yet
+                if (hiddenWord == word)
                 {
                     Console.WriteLine("\nYou won!\n");
                     break;
