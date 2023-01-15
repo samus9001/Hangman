@@ -3,7 +3,7 @@
     internal class Program
     {
         const int ATTEMPTS = 8;
-
+        const int GAME_OVER = 0;
         static void Main(string[] args)
         {
             List<string> words = new List<string>() { "rabbit", "blanket", "glitter", "cranium" };
@@ -15,8 +15,7 @@
             //variables that track the game state
             char guess;
             char endGame;
-            int incorrectGuess = 0;
-            int guessesLeft = 8;
+            int guessesLeft = ATTEMPTS;
 
             string word = words[index];
             string hiddenWord = "";
@@ -44,7 +43,6 @@
                 //checks if the guess character is not present in the element
                 if (!word.Contains(guess, StringComparison.OrdinalIgnoreCase))
                 {
-                    incorrectGuess++;
                     guessesLeft--;
                     Console.WriteLine("\nThat is incorrect!\n");
                     Console.WriteLine($"You have {guessesLeft} guesses left. Try again!");
@@ -70,43 +68,29 @@
                 Console.WriteLine($"\n{hiddenWord}\n");
 
                 //game over condition check
-                if (incorrectGuess >= ATTEMPTS)
+                if (guessesLeft <= GAME_OVER)
                 {
+                    Console.Clear();
                     Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press N to exit");
-                    
-                    //prompts user to restart or exit game
-                    endGame = Console.ReadKey().KeyChar;
-
-                    if (endGame == 'Y')
-                    {
-                        Console.Clear();
-                        Main(args);
-                    }
-
-                    else if (endGame == 'N')
-                    {
-                        Environment.Exit(0);
-                    }
+                    break;
                 }
+            }
 
-                //game won condition check
-                while (hiddenWord == word)
-                {
-                    //break;
-                    Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press N to exit");
-                    endGame = Console.ReadKey().KeyChar;
+            //game won
+            Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press N to exit");
 
-                    if (endGame == 'Y')
-                    {
-                        Console.Clear();
-                        Main(args);
-                    }
+            //prompts user to restart or exit game
+            endGame = Console.ReadKey().KeyChar;
 
-                    else if (endGame == 'N')
-                    {
-                        Environment.Exit(0);
-                    }
-                }
+            if (endGame == 'Y')
+            {
+                Console.Clear();
+                Main(args);
+            }
+
+            else if (endGame == 'N')
+            {
+                return;
             }
         }
     }
