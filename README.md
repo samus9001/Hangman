@@ -20,4 +20,4 @@ This is a simple program that was made as an exercise to learn how strings, char
 
 ### Getting Started
 
-To use the program run the Hangman.exe file then input any single letter into the console window and follow the prompts.
+To use the program download the bin.zip file from the Releases page, then run the Hangman.exe file then input any single letter into the console window and follow the prompts.
