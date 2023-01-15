@@ -67,7 +67,7 @@
 
                 Console.WriteLine($"\n{hiddenWord}\n");
 
-                //game over condition check
+                //game over check
                 if (guessesLeft <= GAME_OVER)
                 {
                     Console.Clear();
@@ -76,8 +76,11 @@
                 }
             }
 
-            //game won
-            Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press N to exit");
+            //game won check
+            if (hiddenWord == word)
+            {
+                Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press N to exit");
+            }
 
             //prompts user to restart or exit game
             endGame = Console.ReadKey().KeyChar;
