@@ -3,7 +3,6 @@
     internal class Program
     {
         const int ATTEMPTS = 8;
-        const int GAME_OVER = 0;
         static void Main(string[] args)
         {
             List<string> words = new List<string>() { "rabbit", "blanket", "glitter", "cranium" };
@@ -16,6 +15,7 @@
             char guess;
             char endGame;
             int guessesLeft = ATTEMPTS;
+            int gameOver = 0;
 
             string word = words[index];
             string hiddenWord = "";
@@ -68,7 +68,7 @@
                 Console.WriteLine($"\n{hiddenWord}\n");
 
                 //game over check
-                if (guessesLeft <= GAME_OVER)
+                if (guessesLeft <= gameOver)
                 {
                     Console.Clear();
                     Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press any other key to exit");
