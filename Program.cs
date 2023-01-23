@@ -33,7 +33,7 @@
             Console.WriteLine($"\n{hiddenWord}\n");
 
             //main game loop
-            while (hiddenWord != word)
+            while (true)
             {
                 Console.WriteLine(); //new line
                 //makes the input one character only
@@ -74,12 +74,14 @@
                     Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press any other key to exit");
                     break;
                 }
-            }
 
-            //game won check
-            if (hiddenWord == word)
-            {
-                Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press any other key to exit");
+
+                //game won check
+                if (hiddenWord == word)
+                {
+                    Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press any other key to exit");
+                    break;
+                }
             }
 
             //prompts user to restart or exit game
