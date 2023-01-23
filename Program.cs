@@ -71,7 +71,7 @@
                 if (guessesLeft <= GAME_OVER)
                 {
                     Console.Clear();
-                    Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press N to exit");
+                    Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press any other key to exit");
                     break;
                 }
             }
@@ -79,7 +79,7 @@
             //game won check
             if (hiddenWord == word)
             {
-                Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press N to exit");
+                Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press any other key to exit");
             }
 
             //prompts user to restart or exit game
@@ -91,10 +91,8 @@
                 Main(args);
             }
 
-            else if (endGame == 'N')
-            {
-                return;
-            }
+            else return;
+
         }
     }
 }
