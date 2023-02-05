@@ -41,14 +41,14 @@ namespace Hangman
                 {
                     //makes the input one character only
                     char guess = Console.ReadKey(true).KeyChar;
-                    /*
+                    
                     //check if the guess has already been made
-                    if (guessesMade.Contains(guess.ToString(), StringComparison.OrdinalIgnoreCase))
+                    if (guessesMade.Contains(guess, StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.WriteLine("You have already made this guess, enter a different character:");
+                        Console.WriteLine("You have already made this guess, enter a different letter:");
                         continue;
                     }
-                    */
+                   
                     //checks if the guess character is not present in the element
                     if (!word.Contains(guess, StringComparison.OrdinalIgnoreCase))
                     {
