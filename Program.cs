@@ -70,8 +70,7 @@ namespace Hangman
                     }
 
                     //stores the guess in a list
-                    char guessesStored = ((guess));
-                    guessesMade.Add(guessesStored);
+                    guessesMade.Add(guess);
                     Console.Write("Letters guessed: ");
                     //displays all guesses made
                     for (int i = 0; i < guessesMade.Count; i++)
@@ -85,19 +84,20 @@ namespace Hangman
                     if (guessesLeft <= 0)
                     {
                         Console.Clear();
-                        Console.WriteLine($"\nGame over! The word was {word}\n\nIf you would like to play again press Y or press any other key to exit");
+                        Console.WriteLine($"Game over! The word was {word}\n\n");
                         break;
                     }
 
                     //game won check
                     if (hiddenWord == word)
                     {
-                        Console.WriteLine("\nYou guessed the word!\n\nIf you would like to play again press Y or press any other key to exit");
+                        Console.WriteLine("\nYou guessed the word!\n\n");
                         break;
                     }
                 }
 
                 //prompts user to restart or exit game
+                Console.WriteLine("If you would like to play again press Y or press any other key to exit");
                 char endGame = Char.ToUpper(Console.ReadKey().KeyChar);
 
                 if (endGame == 'Y')
